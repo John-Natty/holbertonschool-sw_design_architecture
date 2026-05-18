@@ -1,0 +1,37 @@
+---
+config:
+  class:
+    hideEmptyMembersBox: true
+---
+classDiagram
+direction TB
+    class Book {
+	    -title: str
+	    -author: str
+	    -available: bool
+	    +mark_as_unavailable()
+	    +mark_as_available()
+    }
+
+    class User {
+	    -name: str
+	    -email: str
+    }
+
+    class Loan {
+	    -start_date: str
+	    -end_date: str
+	    +close_loan()
+    }
+
+    class Library {
+    +add_book(book: Book)
+    +register_user(user: User)
+    +create_loan(user: User, book: Book): Loan
+    }
+
+    Library "1" --> "0..*" Book : manages
+    Library "1" --> "0..*" User : registrers
+    Library "1" --> "0..*" Loan : creates
+    Loan "0..*" --> "1" Book : references
+    Loan "0..*" --> "1" User : references
