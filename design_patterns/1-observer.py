@@ -33,17 +33,17 @@ class NewsSubject:
 
 class LogObserver:
     def update(self, topic: str, data: str) -> None:
-        print(f"log: {topic}={data}")
+        print(f"log:{topic}={data}")
 
 
 class EmailObserver:
     def update(self, topic: str, data: str) -> None:
-        print(f"email: {topic}={data}")
+        print(f"email:{topic}={data}")
 
 
 class SmsObserver:
     def update(self, topic: str, data: str) -> None:
-        print(f"sms: {topic}={data}")
+        print(f"sms:{topic}={data}")
 
 
 def main() -> None:
