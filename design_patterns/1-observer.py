@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+from pydoc_data.topics import topics
 from typing import Protocol
 
 
@@ -11,7 +12,11 @@ class NewsSubject:
     def __init__(self) -> None:
         self._subs: dict[Observer, set[str] | None] = {}
 
-    def subscribe(self, observer: Observer, topics: set[str] | None = None) -> None:
+    def subscribe(
+        self,
+        observer: Observer,
+        topics: set[str] | None = None,
+    ) -> None:
         if observer in self._subs:
             return  # ignore duplicate subscribe for same instance
         self._subs[observer] = topics
@@ -28,17 +33,17 @@ class NewsSubject:
 
 class LogObserver:
     def update(self, topic: str, data: str) -> None:
-        print(f"log:{topic}={data}")
+        print(f"log: {topic}={data}")
 
 
 class EmailObserver:
     def update(self, topic: str, data: str) -> None:
-        print(f"email:{topic}={data}")
+        print(f"email: {topic}={data}")
 
 
 class SmsObserver:
     def update(self, topic: str, data: str) -> None:
-        print(f"sms:{topic}={data}")
+        print(f"sms: {topic}={data}")
 
 
 def main() -> None:
